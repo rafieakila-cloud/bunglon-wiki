@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123c2a">
+<meta name="description" content="Bunglon Wiki — ensiklopedia, foto, video, buku, dan jurnal gratis & legal dari Wikipedia, Wikimedia Commons, Open Library, dan OpenAlex.">
+<title>Bunglon Wiki</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="logo" src="icons/icon.svg" alt="Bunglon Wiki">
+      <div class="hero-text">
+        <h1>Bunglon Wiki</h1>
+        <p>ensiklopedia terbuka — <em>curl-ius ke mana saja</em></p>
+      </div>
+    </div>
+    <form id="searchForm" class="searchbar">
+      <svg viewBox="0 0 24 24" class="s-ic"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-1.39 1.39l.27.27v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+      <input id="q" type="search" placeholder="Cari artikel, gambar, video, buku, jurnal…" autocomplete="off" enterkeyhint="search">
+      <button type="submit" class="go">Cari</button>
+    </form>
+    <div class="cat-row" id="catRow">
+      <button class="cat-chip" data-cat="Indonesia">Indonesia</button>
+      <button class="cat-chip" data-cat="ekologi">Alam</button>
+      <button class="cat-chip" data-cat="sains">Sains</button>
+      <button class="cat-chip" data-cat="sejarah">Sejarah</button>
+      <button class="cat-chip" data-cat="sastra Indonesia">Sastra</button>
+      <button class="cat-chip" data-cat="teknologi">Teknologi</button>
+      <button class="cat-chip" data-cat="gastronomi Indonesia">Kuliner</button>
+      <button class="cat-chip" data-cat="astronomi">Astronomi</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="beranda" role="tab">Beranda</button>
+    <button class="tab" data-tab="artikel" role="tab">Artikel</button>
+    <button class="tab" data-tab="gambar" role="tab">Gambar</button>
+    <button class="tab" data-tab="video" role="tab">Video</button>
+    <button class="tab" data-tab="buku" role="tab">Buku</button>
+    <button class="tab" data-tab="jurnal" role="tab">Jurnal</button>
+    <button class="tab" data-tab="karyaku" role="tab">Karyaku</button>
+    <button class="tab" data-tab="tentang" role="tab">Tentang</button>
+  </nav>
+
+  <main>
+    <div id="status" class="status"></div>
+
+    <!-- BERANDA -->
+    <section id="panel-beranda" class="panel active">
+      <div class="hero-strip" id="todayHero">
+        <div class="hs-badge">HARI INI · WIKIPEDIA</div>
+        <h2 id="todayTitle">Memuat foto hari ini…</h2>
+        <img id="todayImg" alt="Foto hari ini dari Wikimedia Commons" loading="lazy">
+        <p id="todayCaption"></p>
+      </div>
+
+      <div class="section-head"><h2>Artikel pilihan</h2><button class="mini-btn" id="moreRandom">acak lagi ↻</button></div>
+      <div id="featuredArticles" class="featured-row"></div>
+
+      <div class="section-head"><h2>Video pilihan</h2><button class="mini-btn" id="moreVideos">lebih banyak →</button></div>
+      <div id="featuredVideos" class="featured-row"></div>
+
+      <div class="section-head"><h2>Buku rekomendasi</h2><button class="mini-btn" id="moreBooks">perpustakaan →</button></div>
+      <div id="featuredBooks" class="featured-row"></div>
+
+      <div class="section-head"><h2>Jurnal paling banyak dikutip</h2><button class="mini-btn" id="moreJournals">lebih banyak →</button></div>
+      <div id="featuredJournals"></div>
+    </section>
+
+    <!-- ARTIKEL -->
+    <section id="panel-artikel" class="panel"></section>
+    <!-- GAMBAR -->
+    <section id="panel-gambar" class="panel"></section>
+    <!-- VIDEO -->
+    <section id="panel-video" class="panel"></section>
+    <!-- BUKU -->
+    <section id="panel-buku" class="panel"></section>
+    <!-- JURNAL -->
+    <section id="panel-jurnal" class="panel"></section>
+
+    <!-- KARYAKU (upload, tersimpan lokal) -->
+    <section id="panel-karyaku" class="panel">
+      <div class="upload-box">
+        <label class="upload-drop" for="uploadInput">
+          <svg viewBox="0 0 24 24" class="up-ic"><path d="M12 3l4.5 4.5M12 3L7.5 7.5M12 3v13M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="up-title">Unggah karyamu</span>
+          <span class="up-sub">foto &amp; video — tersimpan di perangkatmu (privat, offline)</span>
+        </label>
+        <input id="uploadInput" type="file" accept="image/*,video/*" multiple hidden>
+        <div class="up-note">Tidak diunggah ke server mana pun — tersimpan di browser HP ini saja.</div>
+      </div>
+      <div id="karyaList" class="karya-grid"></div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="panel-tentang" class="panel">
+      <div class="card about">
+        <h2>Tentang Bunglon Wiki</h2>
+        <p>Bunglon Wiki adalah aplikasi <b>gratis dan legal</b>. Isi bersumber dari layanan terbuka:</p>
+        <ul>
+          <li><b>Wikipedia</b> (CC BY-SA) — artikel ensiklopedia bahasa Indonesia</li>
+          <li><b>Wikimedia Commons</b> (CC BY / CC BY-SA / CC0 / Public Domain) — foto &amp; video</li>
+          <li><b>Open Library / Internet Archive</b> — katalog &amp; baca buku gratis</li>
+          <li><b>OpenAlex</b> — metadata jurnal akademik (judul, abstrak, kutipan, DOI)</li>
+        </ul>
+        <p>Atribusi otomatis ditampilkan di setiap kartu konten. Hormati lisensi saat memakai ulang.</p>
+        <p class="dim">Karyaku = unggahan pribadi, tersimpan lokal di perangkat. Dibuat oleh PreOnView · bukan afiliasi resmi Wikipedia.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Wikipedia · Commons · Open Library · OpenAlex</span>
+    <button id="installBtn" class="install hidden">Install</button>
+  </footer>
+
+<script src="app.js"></script>
+</body>
+</html>

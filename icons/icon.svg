@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2e22"/>
+      <stop offset="0.55" stop-color="#134e3a"/>
+      <stop offset="1" stop-color="#0b3b4f"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8dffab"/>
+      <stop offset="0.45" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#15803d"/>
+    </linearGradient>
+    <linearGradient id="belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fef08a"/>
+      <stop offset="1" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <text x="256" y="480" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#a7f3d0" opacity="0.5">bunglon wiki</text>
+  <!-- ekor spiral -->
+  <path d="M96 330c-28 0-46-16-46-36 0-22 20-36 42-32 14 3 22 14 22 26 0 12-10 18-20 15-8-2-13-8-12-16"
+        fill="none" stroke="#22c55e" stroke-width="18" stroke-linecap="round"/>
+  <!-- badan -->
+  <path d="M120 300c0-72 60-118 148-118 84 0 132 44 132 116 0 36-26 56-66 56H188c-42 0-68-19-68-54z"
+        fill="url(#body)" stroke="#052e16" stroke-width="10" stroke-linejoin="round"/>
+  <!-- perut -->
+  <path d="M168 322c24 22 84 30 150 12-14 22-56 34-96 34-30 0-47-18-54-46z" fill="url(#belly)"/>
+  <!-- crest/jambul sesuai gender -->
+  <path d="M250 178l16 26M286 176l18 20M322 178l20 12M214 186l10 28" stroke="#052e16" stroke-width="8" stroke-linecap="round"/>
+  <!-- kepala + mata -->
+  <path d="M332 232c22-10 44-2 44 18 0 18-18 26-36 16-18-9-14-30-8-34z" fill="#16a34a" stroke="#052e16" stroke-width="9"/>
+  <circle cx="356" cy="242" r="13" fill="#fef9c3" stroke="#052e16" stroke-width="6"/>
+  <circle cx="358" cy="243" r="4.5" fill="#052e16"/>
+  <!-- kaki -->
+  <path d="M168 356v30M228 360v30M344 360v30M396 344v30" stroke="#052e16" stroke-width="10" stroke-linecap="round"/>
+  <!-- cabang -->
+  <path d="M60 402c140-26 252-26 392 0" stroke="#064e3b" stroke-width="16" stroke-linecap="round" fill="none"/>
+</svg>
