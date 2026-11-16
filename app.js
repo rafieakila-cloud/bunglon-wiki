@@ -7,6 +7,24 @@ const state = { query: '', deferredPrompt: null };
 const panels = {};
 ['beranda','artikel','gambar','video','buku','jurnal','karyaku','tentang'].forEach(k => panels[k] = $('#panel-' + k));
 
+// ---------- snapshot panel untuk offline ----------
+function persistPanel(name) {
+  try {
+    const el = panels[name];
+    if (el && el.innerHTML.trim()) localStorage.setItem('bw-panel-' + name, el.innerHTML);
+  } catch {}
+}
+function restorePanel(name) {
+  try {
+    const saved = localStorage.getItem('bw-panel-' + name);
+    if (saved && panels[name]) { panels[name].innerHTML = saved; return true; }
+  } catch {}
+  return false;
+}
+function isOnline() { return navigator.onLine !== false; }
+window.addEventListener('offline', () => setStatus('offline — menampilkan data tersimpan'));
+window.addEventListener('online', () => setStatus('online kembali'));
+
 function setStatus(msg, loading) { statusEl.innerHTML = (loading ? '<span class="spinner"></span> ' : '') + (msg || ''); }
 function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
 function stripHtml(s) { const d = document.createElement('div'); d.innerHTML = s || ''; return d.textContent || ''; }
